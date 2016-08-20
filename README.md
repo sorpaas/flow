@@ -158,16 +158,19 @@ long string after `127.0.0.1:10555/graphs/`.
 
 #### Modify the Server, Just a Little Bit...
 
-Now unfortunately you need to stop the server for now (just kill the `boot dev`
-process). Go to project folder's
-`src/clj/flow/walker/coordinators/primitives.clj`. Around line 106, change that
-to trainee's id as you got above. Around line 112, change that to minimizer's id
-as you got above.
+Go to project folder's `src/clj/flow/walker/coordinators/primitives.clj`. Around
+line 106, change that to trainee's id as you got above. Around line 112, change
+that to minimizer's id as you got above.
+
+Now unfortunately you need to restart the server. Go to the REPL and run:
+
+```
+(reset)
+```
 
 #### Restart the Server and Create the Final Graph
 
-Now restart the server. Go to `127.0.0.1:10555/graph/home` again. Create a graph
-like this:
+Go to `127.0.0.1:10555/graph/home` again. Create a graph like this:
 
 ![Screenshot Trainer](screenshot-trainer.png)
 
