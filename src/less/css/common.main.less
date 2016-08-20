@@ -1,0 +1,121 @@
+@import "variables.less";
+@import "normalize.less";
+@import "uikit/almost-flat/uikit.less";
+
+@editor-background: #333333;
+@instance-name-background: #5C8FE8;
+@instance-background: #4A82E5;
+
+body {
+  background-color: @editor-background;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-links a {
+    padding: 0.7em;
+    font-weight: 500;
+  }
+
+  .header-links a:hover {
+    text-decoration: none;
+  }
+
+  .header-links a.signup:hover {
+    background-color: @instance-background;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.showcase {
+  text-align: center;
+  padding: 8em 5em;
+
+  h1 {
+    font-size: 80px;
+    line-height: 90px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.receipts-container {
+  margin-bottom: 4em;
+  margin-top: 4em;
+}
+
+.receipts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .receipt {
+    background-color: @instance-background;
+    border-radius: 5px;
+    border-color: @instance-background !important;
+    border: 1px solid;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2), 0px 25px 50px 0px rgba(0, 0, 0, 0.1);
+    max-width: 20em;
+    margin: 0.5em 1em;
+
+    .name {
+      padding-top: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 5px;
+      background-color: @instance-name-background;
+      font-weight: 700;
+    }
+
+    .receipt-link {
+      text-align: right;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+}
+
+form.login {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+
+  label {
+    padding-top: 1em;
+    padding-bottom: 0.3em;
+  }
+
+  input.text {
+    font-size: 2rem;
+    background-color: @gray-4;
+    padding: 0.2em;
+    border-top: 1px solid #7c7c7c;
+    border-right: 1px solid #c3c3c3;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #c3c3c3;
+  }
+
+  input.submit {
+    display: inline-block;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 0.5em;
+    margin-bottom: 2rem;
+    padding: 10px;
+    line-height: 40px;
+    background: #3cf;
+    border: 0 none currentColor;
+    border-radius: 10px;
+  }
+}

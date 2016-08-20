@@ -1,0 +1,340 @@
+@import "variables.less";
+@import "normalize.less";
+@import "uikit/almost-flat/uikit.less";
+
+@editor-background: #333333;
+@instance-name-background: #5C8FE8;
+@instance-background: #4A82E5;
+
+html, body {
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.editor {
+  background-color: @editor-background;
+}
+
+.editor, .editor-svg, .dragger {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Fix pointer events for foreground svg.
+.editor-svg {
+  pointer-events: none;
+
+  g.connection {
+    pointer-events: painted;
+  }
+}
+
+.editor-top {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+
+
+  .dark-textbox, .friendly-name-textbox, .friendly-name-const, .new-instance-textbox {
+    background-color: @gray-3;
+    color: @gray-1;
+    border: 0;
+    padding: 0.25rem 1rem;
+    margin-right: 0.25rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2), 0px 25px 50px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .sideview-wrapper {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: @gray-4;
+
+    .items {
+      display: flex;
+
+      .item:not(:first-child) {
+        margin-left: 0.5rem;
+      }
+    }
+
+    .item {
+      margin: 0.7rem 0;
+    }
+
+    .item .name {
+      padding: 0.2rem 0.3rem;
+      background-color: @instance-background;
+      border-radius: 5px;
+
+      .action {
+        margin: 0 0.4rem;
+      }
+    }
+
+    .description {
+      font-size: 0.75rem;
+    }
+  }
+
+  .graph-inports, .graph-outports, .graph-instances {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.7rem;
+    display: flex;
+    width: auto;
+  }
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: row;
+  padding: 0.5rem 0.5rem;
+
+  .friendly-name {
+    display: flex;
+    align-items: baseline;
+
+    .friendly-name-textbox {
+      background-color: @gray-3;
+    }
+
+    .friendly-name-const {
+      background-color: @gray-4;
+    }
+  }
+
+  .new-instance {
+    display: flex;
+    align-items: baseline;
+
+    .new-instance-textbox {
+      background-color: @gray-3;
+    }
+  }
+}
+
+.editor-footer {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+  background-color: @gray-3;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2), 0px 25px 50px 0px rgba(0, 0, 0, 0.1);
+}
+
+// Instances
+
+div.instance {
+  max-width: 20rem;
+  pointer-events: auto;
+  opacity: 0.9;
+  position: fixed;
+  background-color: @instance-background;
+  border-radius: 5px;
+  border-color: @instance-background !important;
+  border: 1px solid;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2), 0px 25px 50px 0px rgba(0, 0, 0, 0.1);
+
+  .instance-prefix {
+    display: flex;
+    justify-content: flex-between;
+
+    .name {
+      padding-top: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 5px;
+      background-color: @instance-name-background;
+      font-weight: 700;
+    }
+
+    .edit-node-type {
+      background-color: transparent;
+    }
+  }
+  
+  .component-port-toggle, .component-port-delete {
+    background-color: transparent;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+  }
+
+  .instance-constant-textbox, .instance-constant-const, .component-new-port-textbox {
+    color: @gray-1;
+    border: 0;
+    font-size: 12px;
+    padding: 0.25em 1em;
+    margin-right: 0.25em;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2), 0px 25px 50px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .component-new-port {
+    display: flex;
+    justify-content: flex-end;
+
+    .component-new-port-textbox {
+      background-color: @gray-3;
+    }
+
+    .component-new-port-button {
+      background-color: transparent;
+    }
+  }
+
+  .instance-constant {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    padding: 0 0.5rem;
+
+    .instance-constant-textbox {
+      background-color: @gray-3;
+    }
+
+    .instance-constant-const {
+      background-color: @gray-4;
+    }
+
+    .instance-constant-edit {
+      background-color: transparent;
+    }
+  }
+}
+
+// Components
+
+.editable {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  align-items: center;
+  justify-content: center;
+
+  .editable-const, .editable-input {
+    font-family: @root-font-family;
+    font-size: @large-font-size;
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .editable-const {
+    color: @gray-1;
+  }
+
+  .editable-input {
+    width: 100%;
+    color: @gray-2;
+  }
+
+  .editable-button {
+    background-color: @gray-5;
+    font-size: @root-font-size;
+    color: @gray-1;
+    border-radius: 3px;
+    padding: 0px 5px;
+    vertical-align: middle;
+  }
+}
+
+div.instance .ports {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  cursor: pointer;
+}
+
+@port-space-between: 2px;
+
+div.instance .inports {
+  flex-grow: 1;
+  padding-top: @port-space-between;
+  padding-bottom: @port-space-between;
+
+  .inport-wrapper {
+    margin-left: 0.6em;
+  }
+
+  .inport {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: @port-space-between;
+    margin-bottom: @port-space-between;
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+
+  .inport:before {
+    content: "•";
+    margin-left: -0.6em;
+    padding-right: 0.3em;
+  }
+}
+
+div.instance .outports {
+  flex-grow: 1;
+  margin-left: auto;
+  padding-top: @port-space-between;
+  padding-bottom: @port-space-between;
+
+  .outport-wrapper {
+    margin-right: 0.6em;
+  }
+
+  .outport {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: @port-space-between;
+    margin-bottom: @port-space-between;
+    margin-left: 15px;
+    margin-right: 5px;
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .outport:after {
+    content: "•";
+    margin-right: -0.6em;
+    padding-left: 0.3em;
+  }
+}
+
+path.edge-bg {
+  stroke-width: 3px;
+  filter: url(#blur-filter);
+  fill: none;
+}
+
+path.edge-fg {
+  stroke-width: 2px;
+  fill: none;
+  stroke: #FEBA01;
+}
+
+circle.port-circle-bg {
+  fill: #FEBA01;
+}
+
+circle.port-circle-small {
+  fill: #FEBA01;
+}

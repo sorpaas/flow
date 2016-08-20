@@ -1,0 +1,1 @@
+{:libs ["vendor/objectid.js"]}
