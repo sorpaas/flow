@@ -9,6 +9,8 @@ external ones (sending tweets, fetch HTTP endpoints and etc).
 
 Under the hood, Flow uses Tensorflow to do all the Machine Learning tasks.
 
+![Screenshot](screenshot.png)
+
 ## Flow-based Graph
 
 Due to different iterations of this program, you may come across terms like
@@ -121,6 +123,8 @@ a new graph node appears. Press the edit button on that node to enter the graph.
 In here, we use the "New Instance" search box on top-right to search for and add
 approriate nodes. The result would be something like below:
 
+![Screenshot Minimizer](screenshot-min.png)
+
 Create two graph inports `y` and `y_` (using the inports panel on the right),
 connect `y` to `tensorflow/log`'s `in` inport, and connect `y_` to
 `tensorflow/time`'s `b` inport.
@@ -144,6 +148,8 @@ should appear. Click the edit button on that node.
 In here, we only need a softmax node to make it functional. The result would
 look something like below:
 
+![Screenshot Trainee](screenshot-trainee.png)
+
 Create a graph inport `x`, and connect it to `tensorflow/softmax`'s `in`. Create
 a graph outport `y`, and connect it to `tensorflow/softmax`'s `out`.
 
@@ -162,6 +168,8 @@ as you got above.
 
 Now restart the server. Go to `127.0.0.1:10555/graph/home` again. Create a graph
 like this:
+
+![Screenshot Trainer](screenshot-trainer.png)
 
 Once you connected everything, the server will start to train a MNIST model and
 you are done!
