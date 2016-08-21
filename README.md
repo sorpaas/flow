@@ -1,11 +1,11 @@
 # Flow
 
-*This is a work-in-progress. The program may be buggy. You are warned!*
+*This is work-in-progress. The program may be buggy. You are warned!*
 
-Flow is a flow-based automation tool that is capable to run simple Machine
+Flow is a flow-based automation tool that is capable of running simple Machine
 Learning programs. In Flow, users mainly work with a drag-and-drop flow-based
 "graph" to create Machine Learning components (trainers and minimizers) and
-external ones (sending tweets, fetch HTTP endpoints and etc).
+external ones (sending tweets, fetch HTTP endpoints, etc.).
 
 Under the hood, Flow uses Tensorflow to do all the Machine Learning tasks.
 
@@ -37,7 +37,7 @@ their own refresh rate.
 
 ## Machine Learning
 
-Currently the Machine Learning part of Flow is a work-in-progress. It can only
+Currently, the Machine Learning part of Flow is work-in-progress. It can only
 handle really simple ones like
 [MNIST handwritten digits](http://yann.lecun.com/exdb/mnist/). An example is
 shown below.
@@ -86,7 +86,7 @@ Compiling ClojureScript...
 Elapsed time: 29.413 sec
 ```
 
-Connect to the nREPL using your favourite Clojure tools (Emacs' cider, for
+Connect to the nREPL using your favorite Clojure tools (Emacs' cider, for
 example). If you don't have one installed, simply run this command:
 
 ```
@@ -121,7 +121,7 @@ Create a new graph by pressing the start ("*") icon on top-left. You should see
 a new graph node appears. Press the edit button on that node to enter the graph.
 
 In here, we use the "New Instance" search box on top-right to search for and add
-approriate nodes. The result would be something like below:
+appropriate nodes. The result would be something like below:
 
 ![Screenshot Minimizer](screenshot-min.png)
 
@@ -162,7 +162,7 @@ Go to project folder's `src/clj/flow/walker/coordinators/primitives.clj`. Around
 line 106, change that to trainee's id as you got above. Around line 112, change
 that to minimizer's id as you got above.
 
-Now unfortunately you need to restart the server. Go to the REPL and run:
+Now, you need to restart the server. Go to the REPL and run:
 
 ```
 (reset)
@@ -174,5 +174,5 @@ Go to `127.0.0.1:10555/graph/home` again. Create a graph like this:
 
 ![Screenshot Trainer](screenshot-trainer.png)
 
-Once you connected everything, the server will start to train a MNIST model and
+Once you connected everything, the server will start to train MNIST models and
 you are done!
